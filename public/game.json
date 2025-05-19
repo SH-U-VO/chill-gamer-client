@@ -1,122 +1,102 @@
 [
   {
-    "id": "1",
     "coverImage": "https://via.placeholder.com/300/FF6B6B/FFFFFF?Text=Cyberpunk%202077",
     "title": "Cyberpunk 2077",
     "reviewDescription": "A sprawling open-world RPG with a compelling narrative and stunning visuals. Despite some initial technical issues, the game offers a deep and immersive experience in Night City.",
     "rating": 4.5,
     "publishingYear": 2020,
     "genres": "RPG",
-    "reviewerEmail": "user1@example.com",
-    "reviewerName": "TechGeek",
-    "watchlist": ["user2@example.com"]
+    "userEmail": "user1@example.com",
+    "userName": "TechGeek"
   },
   {
-    "id": "2",
     "coverImage": "https://via.placeholder.com/300/4ECDC4/FFFFFF?Text=The%20Last%20of%20Us%20Part%20II",
     "title": "The Last of Us Part II",
     "reviewDescription": "A emotionally charged and controversial sequel that delivers a powerful story, intense gameplay, and unforgettable characters. It's a brutal and unflinching look at revenge and its consequences.",
     "rating": 4.8,
     "publishingYear": 2020,
     "genres": "Action",
-    "reviewerEmail": "gamerpro@example.com",
-    "reviewerName": "EllieFan",
-    "watchlist": ["user1@example.com", "user3@example.com"]
+    "userEmail": "gamerpro@example.com",
+    "userName": "EllieFan"
   },
   {
-    "id": "3",
     "coverImage": "https://via.placeholder.com/300/FFE066/000000?Text=Stardew%20Valley",
     "title": "Stardew Valley",
     "reviewDescription": "A charming and relaxing farming simulator with surprising depth and endless replayability. Build your farm, make friends, explore the mines, and find your place in Pelican Town.",
     "rating": 4.9,
     "publishingYear": 2016,
     "genres": "Simulation",
-    "reviewerEmail": "farmlover@example.com",
-    "reviewerName": "PixelFarmer",
-    "watchlist": ["user2@example.com", "user4@example.com"]
+    "userEmail": "farmlover@example.com",
+    "userName": "PixelFarmer"
   },
   {
-    "id": "4",
     "coverImage": "https://via.placeholder.com/300/386641/FFFFFF?Text=Hades",
     "title": "Hades",
     "reviewDescription": "A critically acclaimed roguelike with fast-paced combat, a compelling story based on Greek mythology, and a beautiful art style. Each run is unique, and the progression system is incredibly satisfying.",
     "rating": 4.7,
     "publishingYear": 2020,
     "genres": "Action",
-    "reviewerEmail": "mythosgamer@example.com",
-    "reviewerName": "UnderworldKing",
-    "watchlist": ["user1@example.com", "user3@example.com", "user5@example.com"]
+    "userEmail": "mythosgamer@example.com",
+    "userName": "UnderworldKing"
   },
   {
-    "id": "5",
     "coverImage": "https://via.placeholder.com/300/1C7ED6/FFFFFF?Text=Red%20Dead%20Redemption%202",
     "title": "Red Dead Redemption 2",
     "reviewDescription": "An epic Western open-world adventure with a richly detailed world, a gripping story, and memorable characters. It's a slow-burn masterpiece that rewards patience and exploration.",
     "rating": 4.9,
     "publishingYear": 2018,
     "genres": "Adventure",
-    "reviewerEmail": "cowboycoder@example.com",
-    "reviewerName": "ArthurMorganFan",
-    "watchlist": ["user2@example.com", "user4@example.com", "user6@example.com"]
+    "userEmail": "cowboycoder@example.com",
+    "userName": "ArthurMorganFan"
   },
   {
-    "id": "6",
     "coverImage": "https://via.placeholder.com/300/F72585/FFFFFF?Text=Celeste",
     "title": "Celeste",
     "reviewDescription": "A challenging and rewarding platformer with a heartfelt story about overcoming anxiety and self-doubt. The gameplay is precise and demanding, but the sense of accomplishment is immense.",
     "rating": 4.8,
     "publishingYear": 2018,
     "genres": "Platformer",
-    "reviewerEmail": "climber@example.com",
-    "reviewerName": "StrawberryLover",
-    "watchlist": ["user1@example.com", "user3@example.com", "user5@example.com"]
+    "userEmail": "climber@example.com",
+    "userName": "StrawberryLover"
   },
   {
-    "id": "7",
     "coverImage": "https://via.placeholder.com/300/7209B7/FFFFFF?Text=Disco%20Elysium",
     "title": "Disco Elysium",
     "reviewDescription": "A revolutionary RPG with a unique blend of detective work, dialogue, and skill checks. Its incredible writing and memorable characters make it a truly unforgettable experience.",
     "rating": 4.9,
     "publishingYear": 2019,
     "genres": "RPG",
-    "reviewerEmail": "detective@example.com",
-    "reviewerName": "KimKitsuragiFan",
-    "watchlist": ["user2@example.com", "user4@example.com", "user6@example.com"]
+    "userEmail": "detective@example.com",
+    "userName": "KimKitsuragiFan"
   },
   {
-    "id": "8",
     "coverImage": "https://via.placeholder.com/300/F94144/FFFFFF?Text=Doom%20Eternal",
     "title": "Doom Eternal",
     "reviewDescription": "A brutal and relentless first-person shooter with fast-paced action, heavy metal soundtrack, and satisfyingly gory combat. It's a pure adrenaline rush from start to finish.",
     "rating": 4.7,
     "publishingYear": 2020,
     "genres": "Action",
-    "reviewerEmail": "slayer@example.com",
-    "reviewerName": "DoomFanatic",
-    "watchlist": ["user1@example.com", "user3@example.com", "user5@example.com"]
+    "userEmail": "slayer@example.com",
+    "userName": "DoomFanatic"
   },
   {
-    "id": "9",
     "coverImage": "https://via.placeholder.com/300/008080/FFFFFF?Text=Terraria",
     "title": "Terraria",
     "reviewDescription": "A vast and engaging 2D sandbox adventure game with crafting, building, exploration, and combat. Its endless possibilities and charming pixel art style keep players coming back for more.",
     "rating": 4.8,
     "publishingYear": 2011,
     "genres": "Adventure",
-    "reviewerEmail": "builder@example.com",
-    "reviewerName": "PixelExplorer",
-    "watchlist": ["user2@example.com", "user4@example.com", "user6@example.com"]
+    "userEmail": "builder@example.com",
+    "userName": "PixelExplorer"
   },
   {
-    "id": "10",
     "coverImage": "https://via.placeholder.com/300/90BE6D/FFFFFF?Text=Minecraft",
     "title": "Minecraft",
     "reviewDescription": "A timeless sandbox game that allows for limitless creativity and exploration. Build anything you can imagine, survive against monsters, and explore procedurally generated worlds.",
     "rating": 4.9,
     "publishingYear": 2011,
     "genres": "Simulation",
-    "reviewerEmail": "crafter@example.com",
-    "reviewerName": "BlockBuilder",
-    "watchlist": ["user1@example.com", "user3@example.com", "user5@example.com"]
+    "userEmail": "crafter@example.com",
+    "userName": "BlockBuilder"
   }
 ]

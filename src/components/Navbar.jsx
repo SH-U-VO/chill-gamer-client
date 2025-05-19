@@ -1,4 +1,5 @@
 import logo from '../assets/logo.png'
+import { IoMdLogIn } from "react-icons/io";
 
 const Navbar = () => {
   return (
@@ -14,15 +15,15 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 p-2 shadow ">
               <li><a>Home</a></li>
               <li>
-              <details>
-                <summary >Reviews</summary>
-                <ul className="p-2 w-50">
-                  <li><a>Add Review</a></li>
-                  <li><a>All Review</a></li>
-                  <li><a>My Reviews</a></li>
-                </ul>
-              </details>
-            </li>
+                <details>
+                  <summary >Reviews</summary>
+                  <ul className="p-2 w-50">
+                    <li><a>Add Review</a></li>
+                    <li><a>All Review</a></li>
+                    <li><a>My Reviews</a></li>
+                  </ul>
+                </details>
+              </li>
               <li><a>Watchlist</a></li>
             </ul>
           </div>
@@ -48,7 +49,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-transparent">Button</a>
+          <a
+            className="btn btn-wide bg-transparent rounded-full border-2  border-white text-white hover:bg-pink-200/70 hover:shadow-lg hover:drop-shadow-lg transition-all duration-300"
+          >
+            Log In
+            <IoMdLogIn className='text-xl'></IoMdLogIn>
+          </a>
         </div>
       </div>
     </div>
