@@ -1,6 +1,7 @@
 [
   {
-    "coverImage": "https://via.placeholder.com/300/FF6B6B/FFFFFF?Text=Cyberpunk%202077",
+    "id": "1",
+    "coverImage": "https://wallpapers.com/images/hd/pubg-banner-1920-x-1080-background-prs6to3hgrs8nk7x.jpg",
     "title": "Cyberpunk 2077",
     "reviewDescription": "A sprawling open-world RPG with a compelling narrative and stunning visuals. Despite some initial technical issues, the game offers a deep and immersive experience in Night City.",
     "rating": 4.5,
@@ -10,6 +11,7 @@
     "userName": "TechGeek"
   },
   {
+    "id": "2",
     "coverImage": "https://via.placeholder.com/300/4ECDC4/FFFFFF?Text=The%20Last%20of%20Us%20Part%20II",
     "title": "The Last of Us Part II",
     "reviewDescription": "A emotionally charged and controversial sequel that delivers a powerful story, intense gameplay, and unforgettable characters. It's a brutal and unflinching look at revenge and its consequences.",
@@ -20,6 +22,7 @@
     "userName": "EllieFan"
   },
   {
+    "id": "3",
     "coverImage": "https://via.placeholder.com/300/FFE066/000000?Text=Stardew%20Valley",
     "title": "Stardew Valley",
     "reviewDescription": "A charming and relaxing farming simulator with surprising depth and endless replayability. Build your farm, make friends, explore the mines, and find your place in Pelican Town.",
@@ -30,6 +33,7 @@
     "userName": "PixelFarmer"
   },
   {
+    "id": "4",
     "coverImage": "https://via.placeholder.com/300/386641/FFFFFF?Text=Hades",
     "title": "Hades",
     "reviewDescription": "A critically acclaimed roguelike with fast-paced combat, a compelling story based on Greek mythology, and a beautiful art style. Each run is unique, and the progression system is incredibly satisfying.",
@@ -40,6 +44,7 @@
     "userName": "UnderworldKing"
   },
   {
+    "id": "5",
     "coverImage": "https://via.placeholder.com/300/1C7ED6/FFFFFF?Text=Red%20Dead%20Redemption%202",
     "title": "Red Dead Redemption 2",
     "reviewDescription": "An epic Western open-world adventure with a richly detailed world, a gripping story, and memorable characters. It's a slow-burn masterpiece that rewards patience and exploration.",
@@ -50,6 +55,7 @@
     "userName": "ArthurMorganFan"
   },
   {
+    "id": "6",
     "coverImage": "https://via.placeholder.com/300/F72585/FFFFFF?Text=Celeste",
     "title": "Celeste",
     "reviewDescription": "A challenging and rewarding platformer with a heartfelt story about overcoming anxiety and self-doubt. The gameplay is precise and demanding, but the sense of accomplishment is immense.",
@@ -60,6 +66,7 @@
     "userName": "StrawberryLover"
   },
   {
+    "id": "7",
     "coverImage": "https://via.placeholder.com/300/7209B7/FFFFFF?Text=Disco%20Elysium",
     "title": "Disco Elysium",
     "reviewDescription": "A revolutionary RPG with a unique blend of detective work, dialogue, and skill checks. Its incredible writing and memorable characters make it a truly unforgettable experience.",
@@ -70,6 +77,7 @@
     "userName": "KimKitsuragiFan"
   },
   {
+    "id": "8",
     "coverImage": "https://via.placeholder.com/300/F94144/FFFFFF?Text=Doom%20Eternal",
     "title": "Doom Eternal",
     "reviewDescription": "A brutal and relentless first-person shooter with fast-paced action, heavy metal soundtrack, and satisfyingly gory combat. It's a pure adrenaline rush from start to finish.",
@@ -80,6 +88,7 @@
     "userName": "DoomFanatic"
   },
   {
+    "id": "9",
     "coverImage": "https://via.placeholder.com/300/008080/FFFFFF?Text=Terraria",
     "title": "Terraria",
     "reviewDescription": "A vast and engaging 2D sandbox adventure game with crafting, building, exploration, and combat. Its endless possibilities and charming pixel art style keep players coming back for more.",
@@ -90,6 +99,7 @@
     "userName": "PixelExplorer"
   },
   {
+    "id": "10",
     "coverImage": "https://via.placeholder.com/300/90BE6D/FFFFFF?Text=Minecraft",
     "title": "Minecraft",
     "reviewDescription": "A timeless sandbox game that allows for limitless creativity and exploration. Build anything you can imagine, survive against monsters, and explore procedurally generated worlds.",

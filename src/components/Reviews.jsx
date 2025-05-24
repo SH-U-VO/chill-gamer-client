@@ -1,7 +1,7 @@
 import React from 'react';
-
+import { NavLink} from 'react-router-dom';
 const Reviews = ({ games }) => {
-    
+
 
     return (
         <div className="py-20 text-white">
@@ -18,7 +18,7 @@ const Reviews = ({ games }) => {
                     {games &&
                         games.map((game) => (
                             <div
-                                key={game.id}
+                                key={game._id}
                                 className="bg-neutral-800/50 rounded-lg shadow-md p-8 flex flex-col justify-between items-center text-center"
                             >
                                 <div className="rounded-full bg-purple-200 bg-opacity-10 p-6 mb-4">
@@ -49,9 +49,12 @@ const Reviews = ({ games }) => {
                                 </div>
                                 <span className="text-xs text-gray-500">Year: {game.publishingYear}</span>
                                 <span className="text-xs text-gray-500">Genre: {game.genres}</span>
-                                <button className="btn btn-sm btn-outline text-gray-300 hover:text-white hover:border-purple-400 mt-4">
+                                <NavLink
+
+                                    to={`/game/${game.id}`}
+                                    className="btn btn-sm btn-outline text-gray-300 hover:text-white hover:border-purple-400 mt-4">
                                     Explore Details
-                                </button>
+                                </NavLink>
                             </div>
                         ))}
                 </div>

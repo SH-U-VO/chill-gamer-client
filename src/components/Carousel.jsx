@@ -23,7 +23,7 @@ const Carousel = () => {
 
     return (
         <>
-            <div className="relative w-full mx-auto h-100 overflow-hidden rounded-2xl shadow-lg">
+            <div className="relative w-full mx-auto min-h-screen md:min-h-[50vh] lg:min-h-[75vh] overflow-hidden rounded-2xl shadow-lg">
                 {items.map((src, index) => (
                     <div
                         key={index}

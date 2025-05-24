@@ -27,6 +27,8 @@ const HomeLayout = () => {
                             Explore More !
 
                         </a>
+
+
                     </div>
                 </div>
 

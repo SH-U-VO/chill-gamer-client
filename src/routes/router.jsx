@@ -4,35 +4,66 @@ import HomePage from "../pages/HomePage"
 import AllReview from "../pages/AllReview";
 import AddReview from "../pages/AddReview";
 import MyReview from "../pages/MyReview";
+import GameWatchlist from "../pages/GameWatchlist";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import CardDetails from "../pages/CardDetails";
+import UpdateMyReview from "../components/UpdateMyReview";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-    
+
     children: [
       {
-        path:'/',
+        path: '/',
         element: <HomePage></HomePage>,
-        loader: () => fetch('../game.json'),
+        loader: () => fetch('http://localhost:3000/games'),
       },
       {
-        path:'/allReview',
+        path: '/allReview',
         element: <AllReview />,
+        loader: () => fetch('http://localhost:3000/games'),
+
+      },
+      {
+        path: '/addReview',
+        element: <AddReview />,
+        loader: () => fetch('http://localhost:3000/users')
+      },
+      {
+        path: '/myReview',
+        element: <MyReview />,
+        loader: () => fetch('http://localhost:3000/games'),
+
+      },
+      {
+        path: '/gameWatchlist',
+        element: <GameWatchlist />,
         loader: () => fetch('../game.json'),
-        
       },
       {
-        path:'/addReview',
-        element: <AddReview />
-      
+        path: '/login',
+        element: <Login />
+
       },
       {
-        path:'/myReview',
-        element: <MyReview />
-      
+        path: '/register',
+        element: <Register />
+
       },
+      {
+        path: '/game/:id',
+        element: <CardDetails />,
+        loader: () => fetch('http://localhost:3000/games'),
+      },
+      {
+        path: '/updateGame/:id',
+        element: <UpdateMyReview />,
+        loader: ({params}) => fetch(`http://localhost:3000/games/${params.id}`)
+      }
     ]
   },
   {
