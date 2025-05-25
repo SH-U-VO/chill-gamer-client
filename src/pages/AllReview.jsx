@@ -1,17 +1,37 @@
 import { NavLink, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const AllReview = () => {
-    const games = useLoaderData();
+    const AllGames = useLoaderData();
+    const { userDb } = useContext(AuthContext);
     const [watchList, setWatchList] = useState([]);
 
+
     useEffect(() => {
-        const stored = JSON.parse(localStorage.getItem('watchList')) || [];
-        setWatchList(stored);
-    }, []);
+        if (userDb) {
+            setWatchList(userDb?.myWatchlist || []);
+        }
+    }, [userDb]);
+
+
+
+    if (!userDb) {
+        return <div className="text-white text-center p-10">Loading your profile...</div>;
+    }
+    console.log(userDb)
+    console.log(AllGames)
+    console.log(watchList);
+    console.log('This is watchlist', watchList);
+
+
 
     const handleWatchLater = (gameId) => {
+        console.log('this is game id', gameId)
+        const userID = userDb._id
+        const myWatchlistInfo = { gameId, userID };
+        console.log('this is my watchlist info', myWatchlistInfo)
         if (!watchList.includes(gameId)) {
             const updatedList = [...watchList, gameId];
             setWatchList(updatedList);
@@ -29,6 +49,25 @@ const AllReview = () => {
                 timer: 1500,
             });
         }
+
+        fetch(`http://localhost:3000/users`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(myWatchlistInfo),
+        })
+
+            .then((res) => res.json())
+            .then((data) => {
+                console.log('User update response:', data);
+                if (data.modifiedCount === 0) {
+                    throw new Error('Failed to update user reviews in the database.');
+                }
+            })
+            .catch((error) => {
+                console.error('Something went wrong:', error);
+            });
     };
 
     return (
@@ -41,8 +80,8 @@ const AllReview = () => {
                         </h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {games &&
-                            games.map((game) => {
+                        {AllGames &&
+                            AllGames.map((game) => {
                                 const isWatched = watchList.includes(game._id);
                                 return (
                                     <div
@@ -53,11 +92,10 @@ const AllReview = () => {
                                         <button
                                             onClick={() => handleWatchLater(game._id)}
                                             disabled={isWatched}
-                                            className={`absolute top-4 right-4 px-4 py-1 rounded-full text-xs shadow-lg transition-transform duration-300 ${
-                                                isWatched
-                                                    ? 'bg-gray-500 text-white cursor-not-allowed'
-                                                    : 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:scale-105'
-                                            }`}
+                                            className={`absolute top-4 right-4 px-4 py-1 rounded-full text-xs shadow-lg transition-transform duration-300 ${isWatched
+                                                ? 'bg-gray-500 text-white cursor-not-allowed'
+                                                : 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:scale-105'
+                                                }`}
                                         >
                                             {isWatched ? '✓ Added' : '★ Watch Later'}
                                         </button>

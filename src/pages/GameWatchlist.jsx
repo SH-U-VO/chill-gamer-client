@@ -1,11 +1,60 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { NavLink, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const GameWatchlist = () => {
-  const watchlist = useLoaderData();
+  const AllGames = useLoaderData();
+  const { userDb } = useContext(AuthContext);
+  const [displayedGames, setDisplayedGames] = useState([]);
+
+  useEffect(() => {
+    if (userDb) {
+      const filteredGames = AllGames.filter(game =>
+        userDb?.myWatchlist?.includes(game._id)
+      );
+      setDisplayedGames(filteredGames);
+    }
+  }, [AllGames, userDb]);
+
+  if (!userDb) {
+    return <div className="text-white text-center p-10">Loading your profile...</div>;
+  }
+
+
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/games/${_id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your game has been deleted.",
+                icon: "success"
+              });
+              // Remove the deleted game from UI
+              const remainingGames = displayedGames.filter(game => game._id !== _id);
+              setDisplayedGames(remainingGames);
+            }
+          });
+      }
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-gray-900 to-violet-900 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-gray-900 to-violet-900 py-12 rounded-4xl">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         {/* Heading */}
         <div className="text-center mb-12">
@@ -16,8 +65,8 @@ const GameWatchlist = () => {
 
         {/* Grid of Watchlist Items */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {watchlist && watchlist.length > 0 ? (
-            watchlist.map((game) => (
+          {displayedGames && displayedGames.length > 0 ? (
+            displayedGames.map((game) => (
               <div
                 key={game.id}
                 className="card bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg overflow-hidden"
@@ -40,9 +89,20 @@ const GameWatchlist = () => {
                   <div className="text-sm text-gray-300 mb-4">
                     <span>Genre: {game.genres}</span>
                   </div>
-                  <button className="btn btn-primary bg-pink-500 border-none text-white hover:bg-pink-600">
-                    Remove from Watchlist
-                  </button>
+                  <div className="flex gap-3 mt-2">
+                    <button
+                      onClick={() => handleDelete(game._id)}
+                      className="btn btn-primary bg-gradient-to-r from-red-500 to-pink-600 border-none text-white font-semibold py-2 px-4 rounded-full shadow-md hover:shadow-lg hover:from-red-600 hover:to-pink-700 transform hover:-translate-y-1 transition-all duration-300 w-1/2"
+                    >
+                      Remove
+                    </button>
+                    <NavLink
+                      to={`/game/${game._id}`}
+                      className="btn btn-primary bg-gradient-to-r from-indigo-500 to-violet-600 border-none text-white font-semibold py-2 px-4 rounded-full shadow-md hover:shadow-lg hover:from-indigo-600 hover:to-violet-700 transform hover:-translate-y-1 transition-all duration-300 w-1/2"
+                    >
+                      Explore
+                    </NavLink>
+                  </div>
                 </div>
               </div>
             ))

@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: '/gameWatchlist',
         element: <GameWatchlist />,
-        loader: () => fetch('../game.json'),
+        loader: () => fetch('http://localhost:3000/games'),
       },
       {
         path: '/login',

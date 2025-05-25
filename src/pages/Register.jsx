@@ -71,6 +71,7 @@ const Register = () => {
           email: formData.email,
           createdAt: createdAt,
           myReviews: [],
+          myWatchlist: [],
         };
 
         fetch('http://localhost:3000/users', {

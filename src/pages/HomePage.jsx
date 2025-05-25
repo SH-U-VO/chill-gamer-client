@@ -6,7 +6,7 @@ import ProfilePage from '../components/ProfilePage';
 
 const HomeLayout = () => {
 
-    const games = useLoaderData().slice(0, 3);
+    const games = useLoaderData().slice(0, 4);
 
 
     return (

@@ -12,59 +12,59 @@ const AddReview = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const userID = allUsers.find((u) => user.email === u.email)._id;
+    const userID = allUsers.find((u) => user.email === u.email)._id;
 
-  const coverImage = e.target.coverImage.value;
-  const title = e.target.title.value;
-  const reviewDescription = e.target.reviewDescription.value;
-  const rating = e.target.rating.value;
-  const publishingYear = e.target.publishingYear.value;
-  const genres = e.target.genres.value;
+    const coverImage = e.target.coverImage.value;
+    const title = e.target.title.value;
+    const reviewDescription = e.target.reviewDescription.value;
+    const rating = e.target.rating.value;
+    const publishingYear = e.target.publishingYear.value;
+    const genres = e.target.genres.value;
 
-  const newGame = { coverImage, title, reviewDescription, rating, publishingYear, genres };
+    const newGame = { coverImage, title, reviewDescription, rating, publishingYear, genres };
 
-  // ✅ 1. First, send the review
-  fetch('http://localhost:3000/games', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify(newGame),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log('Game submission response:', data);
-      if (!data.insertedId) {
-        throw new Error('Failed to submit the game review.');
-      }
+    // ✅ 1. First, send the review
+    fetch('http://localhost:3000/games', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(newGame),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('Game submission response:', data);
+        if (!data.insertedId) {
+          throw new Error('Failed to submit the game review.');
+        }
 
-      // ✅ 2. Now use insertedId to update the user
-      const reviewID = data.insertedId;
-      const myReviewInfo = { reviewID, userID };
-
-      return fetch(`http://localhost:3000/users`, {
-        method: 'PATCH',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(myReviewInfo),
+        // ✅ 2. Now use insertedId to update the user
+        const reviewID = data.insertedId;
+        const myReviewInfo = { reviewID, userID };
+        console.log(myReviewInfo)
+        return fetch(`http://localhost:3000/users`, {
+          method: 'PATCH',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(myReviewInfo),
+        });
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('User update response:', data);
+        if (data.modifiedCount === 0) {
+          throw new Error('Failed to update user reviews in the database.');
+        }
+        e.target.reset();
+        setTimeout(() => navigate('/allReview'), 1500);
+      })
+      .catch((error) => {
+        console.error('Something went wrong:', error);
       });
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log('User update response:', data);
-      if (data.modifiedCount === 0) {
-        throw new Error('Failed to update user reviews in the database.');
-      }
-      e.target.reset();
-      setTimeout(() => navigate('/allReview'), 1500);
-    })
-    .catch((error) => {
-      console.error('Something went wrong:', error);
-    });
-};
+  };
 
 
 
