@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const UpdateMyReview = () => {
     const game = useLoaderData();
     const navigate = useNavigate();
-    console.log('This is game from loader', game);
+    //console.log('This is game from loader', game);
 
     const { coverImage, genres, publishingYear, rating, reviewDescription, title, _id } = game;
 
@@ -21,7 +21,7 @@ const UpdateMyReview = () => {
         const genres = e.target.genres.value;
 
         const newGame = { coverImage, title, reviewDescription, rating, publishingYear, genres };
-        console.log(newGame);
+        //console.log(newGame);
 
         // send data to database 
         fetch(`http://localhost:3000/games/${_id}`, {
@@ -33,7 +33,7 @@ const UpdateMyReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 if (data.modifiedCount) {
                     Swal.fire({
                         title: 'Success!',

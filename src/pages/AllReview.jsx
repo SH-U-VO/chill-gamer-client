@@ -1,7 +1,7 @@
 import { NavLink, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../provider/AuthProvider';
+import { AuthContext } from '../context/AuthContext';
 
 const AllReview = () => {
     const AllGames = useLoaderData();
@@ -20,18 +20,18 @@ const AllReview = () => {
     if (!userDb) {
         return <div className="text-white text-center p-10">Loading your profile...</div>;
     }
-    console.log(userDb)
-    console.log(AllGames)
-    console.log(watchList);
-    console.log('This is watchlist', watchList);
+    //console.log(userDb)
+    //console.log(AllGames)
+    //console.log(watchList);
+    //console.log('This is watchlist', watchList);
 
 
 
     const handleWatchLater = (gameId) => {
-        console.log('this is game id', gameId)
+        //console.log('this is game id', gameId)
         const userID = userDb._id
         const myWatchlistInfo = { gameId, userID };
-        console.log('this is my watchlist info', myWatchlistInfo)
+        //console.log('this is my watchlist info', myWatchlistInfo)
         if (!watchList.includes(gameId)) {
             const updatedList = [...watchList, gameId];
             setWatchList(updatedList);
@@ -60,7 +60,7 @@ const AllReview = () => {
 
             .then((res) => res.json())
             .then((data) => {
-                console.log('User update response:', data);
+                //console.log('User update response:', data);
                 if (data.modifiedCount === 0) {
                     throw new Error('Failed to update user reviews in the database.');
                 }

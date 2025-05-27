@@ -2,11 +2,12 @@ import Carousel from '../components/Carousel';
 import Reviews from '../components/Reviews';
 import { useLoaderData } from 'react-router-dom';
 import ProfilePage from '../components/ProfilePage';
+import NewsLatter from '../components/NewsLatter';
 
 
 const HomeLayout = () => {
 
-    const games = useLoaderData().slice(0, 4);
+    const games = useLoaderData().slice(0, 3);
 
 
     return (
@@ -25,16 +26,18 @@ const HomeLayout = () => {
                             className="btn btn-wide bg-transparent rounded-full border-2  border-white text-white hover:bg-pink-200/70 hover:shadow-lg hover:drop-shadow-lg transition-all duration-300"
                         >
                             Explore More !
-
                         </a>
-
-
                     </div>
                 </div>
 
                 {/* My Profile */}
                 <div className='mt-40 mx-10'>
                     <ProfilePage />
+                </div>
+
+                {/* NewsLatter */}
+               <div className='mt-40 mx-10'>
+                    <NewsLatter />
                 </div>
             </div>
         </div>

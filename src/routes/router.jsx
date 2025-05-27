@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import CardDetails from "../pages/CardDetails";
 import UpdateMyReview from "../components/UpdateMyReview";
+import PrivateRoute from "../provider/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -24,24 +25,40 @@ const router = createBrowserRouter([
       },
       {
         path: '/allReview',
-        element: <AllReview />,
+        element: (
+          <PrivateRoute>
+            <AllReview />
+          </PrivateRoute>
+        ),
         loader: () => fetch('http://localhost:3000/games'),
 
       },
       {
         path: '/addReview',
-        element: <AddReview />,
+         element: (
+          <PrivateRoute>
+            <AddReview />
+          </PrivateRoute>
+        ),
         loader: () => fetch('http://localhost:3000/users')
       },
       {
         path: '/myReview',
-        element: <MyReview />,
+        element: (
+          <PrivateRoute>
+            <MyReview />
+          </PrivateRoute>
+        ),
         loader: () => fetch('http://localhost:3000/games'),
 
       },
       {
         path: '/gameWatchlist',
-        element: <GameWatchlist />,
+         element: (
+          <PrivateRoute>
+            <GameWatchlist />
+          </PrivateRoute>
+        ),
         loader: () => fetch('http://localhost:3000/games'),
       },
       {
@@ -56,13 +73,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/game/:id',
-        element: <CardDetails />,
+         element: (
+          <PrivateRoute>
+            <CardDetails />
+          </PrivateRoute>
+        ),
         loader: () => fetch('http://localhost:3000/games'),
       },
       {
         path: '/updateGame/:id',
-        element: <UpdateMyReview />,
-        loader: ({params}) => fetch(`http://localhost:3000/games/${params.id}`)
+        element: (
+          <PrivateRoute>
+            <UpdateMyReview />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:3000/games/${params.id}`)
       }
     ]
   },

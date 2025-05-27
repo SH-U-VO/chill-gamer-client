@@ -1,24 +1,19 @@
+// src/pages/Login.jsx
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../provider/AuthProvider';
+import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleLogIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -26,41 +21,35 @@ const Login = () => {
     setError('');
     setSuccess('');
 
-    const email = formData.email;
-    const password = formData.password;
+    const { email, password } = formData;
 
     signInUser(email, password)
       .then((result) => {
-        console.log('User signed in:', result.user);
-        const lastSignInTime = result?.user?.metadata?.lastSignInTime;
-        const loginInfo = { email, lastSignInTime };
-
-       
-        console.log('Login Info:', loginInfo);
-
-        // Clear form fields
-        setFormData({
-          email: '',
-          password: '',
-        });
-
-        // Show success message
+        //console.log('User signed in:', result.user);
+        setFormData({ email: '', password: '' });
         setSuccess('Login successful!');
-
-        setTimeout(()=> navigate('/'),1000);
+        setTimeout(() => navigate('/'), 1000);
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Login Error:', errorCode, errorMessage);
-
-        // Display user-friendly error messages
         if (errorCode === 'auth/invalid-credential') {
           setError('No user found with this email. Please register first.');
         } else {
-          setError(errorMessage); // Fallback to the raw error message
+          setError(error.message);
         }
       });
+  };
+
+  const handleGoogleLogin = async () => {
+    setError('');
+    setSuccess('');
+    try {
+      await googleLogIn();
+      setSuccess('Google login successful!');
+      navigate('/'); // ✅ Navigation here
+    } catch {
+      setError('Google login failed. Try again.');
+    }
   };
 
   return (
@@ -78,49 +67,33 @@ const Login = () => {
               </Link>
             </p>
           </div>
+
           {error && (
             <div className="alert alert-error shadow-lg">
-              <div className='flex items-center gap-2 font-bold'>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="stroke-current flex-shrink-0 h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
+              <div className="flex items-center gap-2 font-bold">
+                <svg className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>{error}</span>
               </div>
             </div>
           )}
+
           {success && (
             <div className="alert alert-success shadow-lg">
-              <div className='flex items-center gap-2 font-bold'>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="stroke-current flex-shrink-0 h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
+              <div className="flex items-center gap-2 font-bold">
+                <svg className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>{success}</span>
               </div>
             </div>
           )}
+
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="rounded-md shadow-sm space-y-4">
-              {/* Email */}
+            <div className="space-y-4">
               <div>
                 <label htmlFor="email" className="label">
                   <span className="label-text">Email address</span>
@@ -132,13 +105,10 @@ const Login = () => {
                   autoComplete="email"
                   required
                   className="input input-bordered w-full"
-                  placeholder="Email address"
                   value={formData.email}
                   onChange={handleChange}
                 />
               </div>
-
-              {/* Password */}
               <div>
                 <label htmlFor="password" className="label">
                   <span className="label-text">Password</span>
@@ -150,24 +120,16 @@ const Login = () => {
                   autoComplete="current-password"
                   required
                   className="input input-bordered w-full"
-                  placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
                 />
               </div>
             </div>
-
-            {/* Submit Button */}
-            <div>
-              <button type="submit" className="btn btn-primary w-full">
-                Sign In
-              </button>
-            </div>
+            <button type="submit" className="btn btn-primary w-full">Sign In</button>
           </form>
 
-          {/* Google Login */}
           <div className="divider">OR</div>
-          <button className="btn btn-outline btn-secondary w-full">
+          <button onClick={handleGoogleLogin} className="btn btn-outline btn-secondary w-full">
             Sign in with Google
           </button>
         </div>

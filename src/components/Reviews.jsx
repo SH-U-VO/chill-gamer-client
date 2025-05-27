@@ -51,7 +51,7 @@ const Reviews = ({ games }) => {
                                 <span className="text-xs text-gray-500">Genre: {game.genres}</span>
                                 <NavLink
 
-                                    to={`/game/${game.id}`}
+                                    to={`/game/${game._id}`}
                                     className="btn btn-sm btn-outline text-gray-300 hover:text-white hover:border-purple-400 mt-4">
                                     Explore Details
                                 </NavLink>

@@ -43,7 +43,7 @@ const Carousel = () => {
             </div>
 
 
-            <div className='absolute mt-20  lg:mr-48 border-2 border-white-600'>
+            <div className='absolute mt-20   border-2 border-white-600'>
                 <Marquee  >
                 <img className='h-10 mr-30' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDGDLXbBy0gRuhDvHXMOZULiE0CElKsJfpuw&s"></img>
 

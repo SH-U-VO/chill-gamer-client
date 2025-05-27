@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { AuthContext } from "../context/AuthContext";
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 
@@ -35,7 +35,7 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('Game submission response:', data);
+        //console.log('Game submission response:', data);
         if (!data.insertedId) {
           throw new Error('Failed to submit the game review.');
         }
@@ -43,7 +43,7 @@ const AddReview = () => {
         // ✅ 2. Now use insertedId to update the user
         const reviewID = data.insertedId;
         const myReviewInfo = { reviewID, userID };
-        console.log(myReviewInfo)
+        //console.log(myReviewInfo)
         return fetch(`http://localhost:3000/users`, {
           method: 'PATCH',
           headers: {
@@ -54,7 +54,7 @@ const AddReview = () => {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log('User update response:', data);
+        //console.log('User update response:', data);
         if (data.modifiedCount === 0) {
           throw new Error('Failed to update user reviews in the database.');
         }

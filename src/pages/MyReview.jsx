@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useLoaderData } from 'react-router-dom';
 import { CgDetailsMore } from "react-icons/cg";
-import { AuthContext } from '../provider/AuthProvider';
+import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const MyReview = () => {

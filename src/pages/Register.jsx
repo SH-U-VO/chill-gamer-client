@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../provider/AuthProvider';
+import { AuthContext } from '../context/AuthContext';
 
 const Register = () => {
 
@@ -49,7 +49,7 @@ const Register = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
-    console.log(formData)
+    //console.log(formData)
 
     const email = formData.email;
     const password = formData.password;
@@ -63,15 +63,16 @@ const Register = () => {
 
     createUser(email, password)
       .then(result => {
-        console.log('User created at fb', result.user);
+        //console.log('User created at fb', result.user);
         // Signed up 
         const createdAt = result?.user?.metadata?.creationTime;
         const newUser = {
           name: formData.name,
           email: formData.email,
-          createdAt: createdAt,
+          photoURL: formData.photoURL,
           myReviews: [],
           myWatchlist: [],
+          createdAt: createdAt,
         };
 
         fetch('http://localhost:3000/users', {
@@ -84,7 +85,7 @@ const Register = () => {
           .then(res => res.json())
           .then(data => {
             if (data.insertedId) {
-              console.log('users created to db', data);
+              //console.log('users created to db', data);
             }
 
           })
@@ -232,9 +233,14 @@ const Register = () => {
 
             {/* Submit Button */}
             <div>
-              <button type="submit" className="btn btn-primary w-full">
+              <button
+                type="submit"
+                className="btn btn-primary w-full"
+                disabled={!formData.name || !formData.email || !formData.photoURL || !formData.password}
+              >
                 Register
               </button>
+
             </div>
           </form>
         </div>

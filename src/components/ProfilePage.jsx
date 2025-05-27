@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import profile from '../assets/profile.png';
 import { FaArrowUp } from "react-icons/fa";
+import { AuthContext } from '../context/AuthContext';
 
 const ProfilePage = () => {
+    const { userDb } = useContext(AuthContext);
     return (
         <div>
             <div className=" flex flex-col lg:flex-row">
                 {/* Image Section */}
                 <div className="flex-1 lg:w-1/2 flex items-center justify-center lg:min-h-0 relative">
                     <img
-                        src={profile}
+                        src={userDb? userDb.photoURL: profile}
                         alt="Profile"
                         className="w-full h-full object-cover"
                     />
@@ -50,7 +52,7 @@ const ProfilePage = () => {
                 <div className="flex-1 lg:w-1/2 flex flex-col items-center justify-center min-h-[300px] lg:min-h-0">
                     <div className="text-center px-4">
                         {/* Heading */}
-                        <h2 className="text-4xl lg:text-4xl font-bold mb-4">My Name</h2>
+                        <h2 className="text-4xl lg:text-4xl font-bold mb-4">{userDb? userDb.name: 'My Name'}</h2>
                         {/* Subheading */}
                         <p className="mt-4 text-sm text-gray-400 max-w-2xl mx-auto">
                             We're committed to pushing the boundaries of what's possible

@@ -1,0 +1,57 @@
+/* Base styles for dropdowns - hidden by default, starting from the left */
+.dropdown .dropdown-content, /* Mobile menu dropdown */
+.details .desktop-dropdown,  /* Desktop 'Reviews' dropdown */
+.dropdown .profile-dropdown { /* User profile dropdown */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-100%); /* Start off-screen to the left */
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease, transform 0.3s ease;
+  position: absolute; /* Needed for translateX to work correctly relative to parent */
+  left: 0; /* Align to the left of its positioning context */
+}
+
+/* Styles when dropdown is open/hovered */
+.dropdown[open] .dropdown-content, /* For <details> in mobile (hamburger menu) */
+.dropdown:hover > .dropdown-content, /* For overall dropdown hover (Desktop Reviews) */
+.details[open] > ul.desktop-dropdown, /* For <details> in desktop reviews */
+.dropdown-end:hover > ul.profile-dropdown { /* For profile dropdown hover */
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0); /* Move to original position */
+  transition-delay: 0s; /* Appear immediately */
+}
+
+/* Specific z-index adjustments if needed */
+.dropdown .dropdown-content,
+.details .desktop-dropdown,
+.dropdown .profile-dropdown {
+  z-index: 50; /* Ensure dropdowns are above other content */
+}
+
+/* Adjustments for dropdown positioning relative to its trigger */
+/* For the mobile dropdown */
+.navbar-start .dropdown .dropdown-content {
+    left: 0; /* Ensure it starts from the far left of the navbar-start container */
+    /* You might need to adjust the 'top' or 'margin-top' if it doesn't align correctly vertically */
+    margin-top: 1rem; /* Example: to push it down slightly from the button */
+}
+
+/* For the desktop reviews dropdown */
+.navbar-center .details .desktop-dropdown {
+    left: 0; /* Align with the 'Reviews' summary */
+    /* Adjust top or margin-top if needed */
+}
+
+/* For the profile dropdown */
+.navbar-end .dropdown-end .profile-dropdown {
+    right: 0; /* Align to the right of the profile picture */
+    left: auto; /* Override any left:0 */
+    transform: translateX(100%); /* Start off-screen to the right for this one */
+}
+
+.navbar-end .dropdown-end:hover > ul.profile-dropdown {
+    transform: translateX(0); /* Move to original position */
+}
+
+/* Ensure the dropdowns are positioned absolutely within their parent dropdown container */
+/* The parent dropdown container should have position: relative; which DaisyUI typically handles for 'dropdown' class */
