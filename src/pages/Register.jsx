@@ -75,7 +75,7 @@ const Register = () => {
           createdAt: createdAt,
         };
 
-        fetch('http://localhost:3000/users', {
+        fetch('https://chill-gamer-server-drab.vercel.app/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'

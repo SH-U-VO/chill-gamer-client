@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
       const loggedInUser = result.user;
 
       // Send to MongoDB (check if user already exists)
-      const res = await fetch('http://localhost:3000/users');
+      const res = await fetch('https://chill-gamer-server-drab.vercel.app/users');
       const users = await res.json();
 
       const foundUser = users.find((u) => u.email === loggedInUser.email);
@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
           myWatchlist: [],
         };
 
-        await fetch('http://localhost:3000/users', {
+        await fetch('https://chill-gamer-server-drab.vercel.app/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newUser),
@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch('http://localhost:3000/users')
+      fetch('https://chill-gamer-server-drab.vercel.app/users')
         .then((res) => res.json())
         .then((users) => {
           const foundUser = users.find((u) => u.email === user.email);

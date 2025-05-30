@@ -50,7 +50,7 @@ const AllReview = () => {
             });
         }
 
-        fetch(`http://localhost:3000/users`, {
+        fetch(`https://chill-gamer-server-drab.vercel.app/users`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

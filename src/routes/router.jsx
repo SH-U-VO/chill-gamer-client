@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage></HomePage>,
-        loader: () => fetch('http://localhost:3000/games'),
+        loader: () => fetch('https://chill-gamer-server-drab.vercel.app/games'),
       },
       {
         path: '/allReview',
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             <AllReview />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:3000/games'),
+        loader: () => fetch('https://chill-gamer-server-drab.vercel.app/games'),
 
       },
       {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             <AddReview />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:3000/users')
+        loader: () => fetch('https://chill-gamer-server-drab.vercel.app/users')
       },
       {
         path: '/myReview',
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             <MyReview />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:3000/games'),
+        loader: () => fetch('https://chill-gamer-server-drab.vercel.app/games'),
 
       },
       {
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
             <GameWatchlist />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:3000/games'),
+        loader: () => fetch('https://chill-gamer-server-drab.vercel.app/games'),
       },
       {
         path: '/login',
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
             <CardDetails />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:3000/games'),
+        loader: () => fetch('https://chill-gamer-server-drab.vercel.app/games'),
       },
       {
         path: '/updateGame/:id',
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
             <UpdateMyReview />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/games/${params.id}`)
+        loader: ({ params }) => fetch(`https://chill-gamer-server-drab.vercel.app/games/${params.id}`)
       }
     ]
   },

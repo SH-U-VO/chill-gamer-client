@@ -26,7 +26,7 @@ const AddReview = () => {
     const newGame = { coverImage, title, reviewDescription, rating, publishingYear, genres };
 
     // ✅ 1. First, send the review
-    fetch('http://localhost:3000/games', {
+    fetch('https://chill-gamer-server-drab.vercel.app/games', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -44,7 +44,7 @@ const AddReview = () => {
         const reviewID = data.insertedId;
         const myReviewInfo = { reviewID, userID };
         //console.log(myReviewInfo)
-        return fetch(`http://localhost:3000/users`, {
+        return fetch(`https://chill-gamer-server-drab.vercel.app/users`, {
           method: 'PATCH',
           headers: {
             'content-type': 'application/json',

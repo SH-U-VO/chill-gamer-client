@@ -33,7 +33,7 @@ const MyReview = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/games/${_id}`, {
+                fetch(`https://chill-gamer-server-drab.vercel.app/games/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

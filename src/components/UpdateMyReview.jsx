@@ -24,7 +24,7 @@ const UpdateMyReview = () => {
         //console.log(newGame);
 
         // send data to database 
-        fetch(`http://localhost:3000/games/${_id}`, {
+        fetch(`https://chill-gamer-server-drab.vercel.app/games/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
