@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
   const { signInUser, googleLogIn } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,8 +26,8 @@ const Login = () => {
     const { email, password } = formData;
 
     signInUser(email, password)
-      .then((result) => {
-        //console.log('User signed in:', result.user);
+      // eslint-disable-next-line no-unused-vars
+      .then(result => {
         setFormData({ email: '', password: '' });
         setSuccess('Login successful!');
         setTimeout(() => navigate('/'), 1000);
@@ -46,7 +48,7 @@ const Login = () => {
     try {
       await googleLogIn();
       setSuccess('Google login successful!');
-      navigate('/'); // ✅ Navigation here
+      navigate('/');
     } catch {
       setError('Google login failed. Try again.');
     }
@@ -113,16 +115,24 @@ const Login = () => {
                 <label htmlFor="password" className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="input input-bordered w-full"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
+                <div className="relative">
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    autoComplete="current-password"
+                    required
+                    className="input input-bordered w-full pr-10"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                  <span
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-lg text-gray-600"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
               </div>
             </div>
             <button type="submit" className="btn btn-primary w-full">Sign In</button>
